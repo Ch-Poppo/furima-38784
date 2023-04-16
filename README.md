@@ -36,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :purchases
+- has_one :purchases
 
 
 ## purchases テーブル
@@ -50,9 +50,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many :address
+- has_many :addresss
 
-## address テーブル
+## addresss テーブル
 
 | Column             | Type   | Options      　　　  |
 | ------------------ | ------ | ----------- 　　　   |
@@ -66,4 +66,4 @@
 
 ### Association
 
-- belongs_to :user
+- belongs_to :purchase
