@@ -67,3 +67,32 @@
 ### Association
 
 - belongs_to :purchase
+
+## purchases テーブル
+
+| Column    | Type        | Options          |
+| --------- | ----------- | ---------------- |
+| user      | references  | null: false      |
+| item     | references  | null: false      |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addresses テーブル
+
+| Column             | Type   | Options      　　　  |
+| ------------------ | ------ | ----------- 　　　   |
+| post_code          | string | null: false            |
+| prefectures_id     | integer| null: false            |
+| municipality       | string | null: false            |
+| house_number       | string | null: false            |
+| building           | string |                     |
+| telephone_number   | string | null: false            |
+| purchase           | references| null: false, foreign_key: true    |
+
+### Association
+
+- belongs_to :purchase
