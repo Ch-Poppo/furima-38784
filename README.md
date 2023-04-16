@@ -4,33 +4,32 @@
 
 | Column             | Type   | Options      　　　  |
 | ------------------ | ------ | ----------- 　　　   |
-| emaile             | string | NOT NULL,UNIQUE()   |
-| encrypted_password | string | NOT NULL            |
-| nickname           | string | NOT NULL            |
-| first_name         | string | NOT NULL            |
-| family_name        | string | NOT NULL            |
-| date_of_birth      | string | NOT NULL            |
-| first_name_yomi    | string | NOT NULL            |
-| family_name_yomi   | string | NOT NULL            |
+| email              | string | null: false, unique: true   |
+| encrypted_password | string | null: false            |
+| nickname           | string | null: false            |
+| first_name         | string | null: false            |
+| family_name        | string | null: false            |
+| date_of_birth      | date   | null: false            |
+| first_name_yomi    | string | null: false            |
+| family_name_yomi   | string | null: false            |
 
 ### Association
 
-- has_many :goodss
+- has_many :items
 
 
-## goodss テーブル
+## items テーブル
 
 | Column      | Type       | Options          |
 | ----------  | ---------- | ---------------- |
-| title       | string     | NOT NULL         |
-| goods_detail| text       | NOT NULL         |
-| category    | string     | NOT NULL         |
-| user        | references | NOT NULL,外部キー |
-| quality_id  | integer    | NOT NULL         |
-| postage_id  | integer    | NOT NULL         |
-| prefectures | string     | NOT NULL         |
-| date        | date       | NOT NULL         |
-| price       | string     | NOY NULL         |
+| title       | string     | null: false         |
+| goods_detail| text       | null: false         |
+| category_id | interences | null: false         |
+| user        | references | null: false, foreign_key: true |
+| quality_id  | integer    | null: false         |
+| postage_id  | integer    | null: false         |
+| prefectures_id| integer  | null: false         |
+| price       | integer    | null: false         |
 
 
 ### Association
@@ -43,28 +42,28 @@
 
 | Column    | Type        | Options          |
 | --------- | ----------- | ---------------- |
-| user_id   | integer     | NOT NULL         |
-| goods_id  | integer     | NOT NULL         |
+| user_id   | references  | null: false         |
+| items_id  | references  | null: false         |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :goods
+- belongs_to :item
+- belongs_to :address
 
 ## address テーブル
 
 | Column             | Type   | Options      　　　  |
 | ------------------ | ------ | ----------- 　　　   |
-| post_code          | string | NOT NULL            |
-| prefectures_id     | integer| NOT NULL            |
-| municipality       | string | NOT NULL            |
-| house_number       | string | NOT NULL            |
+| post_code          | string | null: false            |
+| prefectures_id     | integer| null: false            |
+| municipality       | string | null: false            |
+| house_number       | string | null: false            |
 | building           | string |                     |
-| telephone_number   | string | NOT NULL            |
-| user_id            | integer| NOT NULL,外部キー    |
+| telephone_number   | string | null: false            |
+| user_id            | integer| null: false, foreign_key: true    |
 
 ### Association
 
-- belongs_to :user
 - has_many :purchases
-- 
+- belongs_to :user
