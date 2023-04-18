@@ -17,7 +17,6 @@
     <ul class='lists-right'>
      <% if user_signed_in? %>
           <div class="user_nav grid-6">
-      <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       </div>
@@ -25,7 +24,6 @@
           <div class="grid-6">
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
       <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       </div>
         <% end %>
     </ul>
