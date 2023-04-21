@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :item do
-# image {''}
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/empty-room-with-chairs-and-desks.jpg'), filename: 'empty-room-with-chairs-and-desks.jpg')
+    end
 title {'商品名'}
 goods_detail {'これは商品'} 
 category_id {'カテゴリー'}
