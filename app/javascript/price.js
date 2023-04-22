@@ -7,8 +7,8 @@ window.addEventListener('load', () => {
     const inputValue = priceInput.value;
     const itemPrice = parseInt(inputValue);
       const addTaxPrice = Math.floor(itemPrice * 0.1);
-      addTaxDom.textContent = addTaxPrice + "円";
+      addTaxDom.textContent = addTaxPrice;
       const profit = itemPrice - addTaxPrice;
-      profitDom.textContent = profit + "円";
+      profitDom.textContent = profit;
     })
   });

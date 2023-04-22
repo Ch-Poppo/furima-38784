@@ -15,7 +15,7 @@ class Category < ActiveHash::Base
     { id: 13, name: '家電・スマホ・カメラ' },
     { id: 14, name: 'スポーツ・レジャー' },
     { id: 15, name: 'ハンドメイド' },
-    { id: 16, name: 'その他' },
+    { id: 16, name: 'その他' }
   ]
 
   include ActiveHash::Associations
