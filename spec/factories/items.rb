@@ -5,11 +5,14 @@ FactoryBot.define do
     end
 title {'商品名'}
 goods_detail {'これは商品'} 
-category_id {'カテゴリー'}
-quality_id {'品質'}
-postage_id {'送料'}
-prefectures_id {'北海道'}
+category_id {'2'}
+quality_id {'2'}
+postage_id {'2'}
+delivery_id {'2'}
+prefectures_id {'2'}
 price {'300'}
+association :user 
+
 
 end
 end
