@@ -147,7 +147,7 @@
             <%= item.title %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.postage_id %></span>
+            <span><%= item.price %>円<br><%= Postage.find(item.postage_id).name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -158,7 +158,6 @@
         <% end %>
       </li>
 
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @items.empty? %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -178,7 +177,7 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
+
 
     </ul>
   </div>
