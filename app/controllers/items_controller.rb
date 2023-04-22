@@ -22,8 +22,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :goods_detail, :category_id, :quality_id, :postage_id, :prefectures_id, :price, :image, :delivery_id,).merge(user_id: current_user.id)
   end
 
-  def redirect_to_login
-    redirect_to new_user_session_path unless user_signed_in?
-  end
 
 end

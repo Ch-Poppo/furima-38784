@@ -47,9 +47,9 @@ RSpec.describe Item, type: :model do
     end
 
     it "出品地（都道府県）が空では保存できない" do
-      @item.prefectures_id = ''
+      @item.prefecture_id = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include("Prefectures can't be blank")
+      expect(@item.errors.full_messages).to include("Prefecture can't be blank")
     end
 
     it "商品の状態が空では保存できない" do
@@ -107,9 +107,9 @@ RSpec.describe Item, type: :model do
     end
 
     it "出品地（都道府県）が---では保存できない" do
-      @item.prefectures_id = 1
+      @item.prefecture_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Prefectures いずれかを選択してください")
+      expect(@item.errors.full_messages).to include("Prefecture いずれかを選択してください")
     end
 
     it "出荷日が---では保存できない" do
