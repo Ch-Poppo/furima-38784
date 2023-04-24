@@ -22,7 +22,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image", value: @item.title %>
       </div>
     </div>
 
