@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authenticate_user!, only: [:edit, :destroy]
   before_action :item_spec, only: [:edit, :show, :update, :destroy]
-  before_action :redirect_unless_user, only: [:edit, :update]
+  before_action :redirect_unless_user, only: [:edit, :update, :destroy]
 
 
   def new
