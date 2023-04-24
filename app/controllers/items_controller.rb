@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authenticate_user!, only: [:edit]
-  before_action :item_spec, only: [:edit, :show, :update]
-  before_action :redirect_unless_user, only: [:edit, :update]
+  before_action :item_spec, only: [:edit, :show, :update, :destroy]
+  before_action :redirect_unless_user, only: [:edit, :update, :destroy]
 
 
   def new
@@ -33,7 +32,12 @@ class ItemsController < ApplicationController
         redirect_to item_path(@item.id)
       else
         render :edit
-      end
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
 
