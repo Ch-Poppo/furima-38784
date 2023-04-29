@@ -8,12 +8,12 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image, class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう購入機能実装後 %>
-      <%# <% if > %>
-      <%# <div class="sold-out">
+
+      <% if @item.purchase %>
+       <div class="sold-out">
         <span>Sold Out!!</span>
-      </div> %>
-      <%# <% end >  %>
+       </div>
+      <% end %> 
 
     </div>
     <div class="item-price-box">
