@@ -8,6 +8,10 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
     end
     context '内容に問題ない場合' do
+      it "tokenがあれば保存ができること" do
+        expect(@purchase_address).to be_valid
+      end
+
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
       end
@@ -29,6 +33,12 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '内容に問題がある場合' do
+      it "tokenが空では登録できないこと" do
+        @purchase_address.token = ""
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
+
       it '電話番号は半角数字のみで10桁または11桁であること' do
         @purchase_address.telephone_number = '111111111'
         @purchase_address.valid?

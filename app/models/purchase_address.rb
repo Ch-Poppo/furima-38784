@@ -1,9 +1,10 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :municipality, :house_number, :building, :telephone_number, :purchase_id, :user_id, :item_id
+  attr_accessor :post_code, :prefecture_id, :municipality, :house_number, :building, :telephone_number, :purchase_id, :user_id, :item_id, :token
 
   with_options presence: true do
-     validates :user_id
+    validates :token
+    validates :user_id
     validates :item_id
     validates :telephone_number, :post_code, :house_number
     validates :municipality, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' }
