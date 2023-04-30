@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :item_purchase, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
+    @purchase_address = PurchaseAddress.new
     if current_user == @item.user
       if @item.purchase
         redirect_to root_path
