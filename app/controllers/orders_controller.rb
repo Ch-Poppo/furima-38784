@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :purchase_check, only: [:index]
+  before_action :user_check, only: [:index]
+
   def index
-    @purchase_address = PurchaseAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def new
@@ -22,6 +23,22 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def purchase_check
+    @purchase_address = PurchaseAddress.new
+    @item = Item.find(params[:item_id])
+    if @item.purchase
+      redirect_to root_path
+    end
+  end
+
+  def user_check
+    @purchase_address = PurchaseAddress.new
+    @item = Item.find(params[:item_id])
+     if current_user == @item.user
+      redirect_to root_path
+    end
+  end
 
   def purchase_params
     params.require(:purchase_address).permit(:post_code, :prefecture_id, :municipality, :house_number, :building, :telephone_number, :purchase_id).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
