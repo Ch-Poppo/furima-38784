@@ -51,7 +51,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Telephone number 半角数字かつ10又は11桁で入力して下さい")
       end
 
-      it '電話番号は11桁以上では保存できないこと' do
+      it '電話番号は12桁以上では保存できないこと' do
         @purchase_address.telephone_number = '111111111111'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Telephone number 半角数字かつ10又は11桁で入力して下さい")
