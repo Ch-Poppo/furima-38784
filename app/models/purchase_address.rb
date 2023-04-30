@@ -14,6 +14,6 @@ class PurchaseAddress
     validates :prefecture_id, numericality: { other_than: 1 , message: "いずれかを選択してください"} 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
-    Address.create(post_code: post_code, prefecture_id: prefecture_id, house_number: house_number, building: building, telephone_number: telephone_number, purchase_id: purchase.id, municipality: municipality)
+    Address.create(post_code: post_code, prefecture_id: prefecture_id, house_number: house_number, building: building, telephone_number: telephone_number, municipality: municipality)
   end
 end

@@ -39,8 +39,20 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
 
-      it '電話番号は半角数字のみで10桁または11桁であること' do
+      it '電話番号は半角数字以外では保存できないこと' do
+        @purchase_address.telephone_number = '電話番号'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Telephone number 半角数字かつ10又は11桁で入力して下さい")
+      end
+
+      it '電話番号は9桁以下では保存できないこと' do
         @purchase_address.telephone_number = '111111111'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Telephone number 半角数字かつ10又は11桁で入力して下さい")
+      end
+
+      it '電話番号は11桁以上では保存できないこと' do
+        @purchase_address.telephone_number = '111111111111'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Telephone number 半角数字かつ10又は11桁で入力して下さい")
       end
@@ -75,8 +87,8 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Post code can't be blank")
       end
 
-      it '都道県が空では保存できないこと' do
-        @purchase_address.prefecture_id = ""
+      it '都道県が---では保存できないこと' do
+        @purchase_address.prefecture_id = 1
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Prefecture いずれかを選択してください")
       end

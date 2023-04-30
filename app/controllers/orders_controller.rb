@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
-  before_action :purchase_check, only: [:index]
-  before_action :user_check, only: [:index]
+  before_action :authenticate_user!, except: [:create, :index]
+  before_action :item_purchase, only: [:index]
 
   def index
-  end
-
-  def new
-    @purchase_address = PurchaseAddress.new
+    if current_user == @item.user
+      if current_user == @item.user
+        redirect_to root_path
+      end
+    end
   end
 
   def create
@@ -24,20 +24,9 @@ class OrdersController < ApplicationController
 
   private
 
-  def purchase_check
+  def item_purchase
     @purchase_address = PurchaseAddress.new
     @item = Item.find(params[:item_id])
-    if @item.purchase
-      redirect_to root_path
-    end
-  end
-
-  def user_check
-    @purchase_address = PurchaseAddress.new
-    @item = Item.find(params[:item_id])
-     if current_user == @item.user
-      redirect_to root_path
-    end
   end
 
   def purchase_params
