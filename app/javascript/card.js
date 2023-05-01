@@ -22,9 +22,9 @@ const pay = () => {
         const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      numberElement.clear();
-      expiryElement.clear();
-      cvcElement.clear();
+      numberElement.clear('#number-form');
+      expiryElement.clear('#expiry-form');
+      cvcElement.clear('#cvc-form');
       document.getElementById("charge-form").submit();
     });
   });
