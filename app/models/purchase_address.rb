@@ -6,7 +6,7 @@ class PurchaseAddress
     validates :token
     validates :user_id
     validates :item_id
-    validates :telephone_number, :post_code, :house_number
+    validates :house_number
     validates :municipality, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' }
     validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: '半角数字かつ-を入れてください' }
     validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: '半角数字かつ10又は11桁で入力して下さい' }
