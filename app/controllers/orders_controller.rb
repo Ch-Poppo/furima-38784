@@ -4,11 +4,8 @@ class OrdersController < ApplicationController
 
   def index
     @purchase_address = PurchaseAddress.new
-    if current_user == @item.user
-      redirect_to root_path
-      if @item.purchase
-        redirect_to root_path
-      end
+    if current_user == @item.user || @item.purchase.present?
+     redirect_to root_path
     end
   end
 
